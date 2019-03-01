@@ -1,8 +1,10 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +14,8 @@ import mali.helo.jokelib.JokeBank;
 import mali.helo.joketeller.JokeTellerActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements EndpointsAsyncTask.OnBackEndResponseListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void onTellJoke(View view) {
+        // Request joke from backend
+        new EndpointsAsyncTask(this, this).execute();
+    }
+
+    @Override
+    public void onBackEndResponse(String response) {
+        // Pass joke to {@link JokeTellerActivity} at joketeller anroid lib
+        Intent tellJoke = new Intent(this, JokeTellerActivity.class);
+        tellJoke.putExtra(JokeTellerActivity.EXTRA_JOKE, response);
+        startActivity(tellJoke);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,16 +57,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void tellJoke(View view) {
-        // Get joke from joke lib
-        JokeBank jokeBank = new JokeBank();
-
-        // Pass joke to {@link JokeTellerActivity} at joketeller anroid lib
-        Intent tellJoke = new Intent(this, JokeTellerActivity.class);
-        tellJoke.putExtra(JokeTellerActivity.EXTRA_JOKE, jokeBank.getJoke());
-        startActivity(tellJoke);
-    }
-
 
 }
