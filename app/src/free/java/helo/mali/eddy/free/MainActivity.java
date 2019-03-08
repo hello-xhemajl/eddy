@@ -1,21 +1,17 @@
-package com.udacity.gradle.builditbigger;
+package helo.mali.eddy.free;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Pair;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import mali.helo.jokelib.JokeBank;
+import helo.mali.eddy.EndpointsAsyncTask;
+import helo.mali.eddy.R;
 import mali.helo.joketeller.JokeTellerActivity;
 
-
-public class MainActivity extends AppCompatActivity
-        implements EndpointsAsyncTask.OnBackEndResponseListener {
+public class MainActivity extends AppCompatActivity implements EndpointsAsyncTask.OnBackEndResponseListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,5 +53,4 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
 }

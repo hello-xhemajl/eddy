@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package helo.mali.eddy.free;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import helo.mali.eddy.R;
 
 
 /**

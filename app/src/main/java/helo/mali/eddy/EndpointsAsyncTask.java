@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package helo.mali.eddy;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -11,7 +11,7 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
-class EndpointsAsyncTask extends AsyncTask<String, Void, String> {
+public class EndpointsAsyncTask extends AsyncTask<String, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
 
